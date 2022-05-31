@@ -7,7 +7,7 @@
 reading_avian_body_sizes()
 }
 \value{
-a \code{data.table} containing all variables from avian_ssd_jan07.txt
+a \code{data.frame} containing all variables from avian_ssd_jan07.txt
 }
 \description{
 Reading, after downloading if needed, the avian body sizes in
