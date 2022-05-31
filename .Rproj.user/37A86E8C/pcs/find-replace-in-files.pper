@@ -1,0 +1,15 @@
+{
+    "dialog-state": {
+        "query": "readr",
+        "path": "",
+        "regex": false,
+        "caseSensitive": false,
+        "wholeWord": false,
+        "filePatterns": [],
+        "excludeFilePatterns": [],
+        "resultsCount": 2,
+        "errorCount": 0,
+        "replaceErrors": "",
+        "projectRelative": true
+    }
+}

@@ -1,0 +1,26 @@
+{
+    "id": "42B12C1A",
+    "path": "~/sTeTra/sTeTools/R/reading_avian_body_sizes.r",
+    "project_path": "R/reading_avian_body_sizes.r",
+    "type": "r_source",
+    "hash": "2376141593",
+    "contents": "",
+    "dirty": false,
+    "created": 1654009417825.0,
+    "source_on_save": false,
+    "relative_order": 2,
+    "properties": {
+        "source_window_id": "",
+        "Source": "Source",
+        "cursorPosition": "12,29",
+        "scrollLine": "2"
+    },
+    "folds": "",
+    "lastKnownWriteTime": 1654010148,
+    "encoding": "UTF-8",
+    "collab_server": "",
+    "source_window": "",
+    "last_content_update": 1654010148446,
+    "read_only": false,
+    "read_only_alternatives": []
+}
