@@ -14,7 +14,7 @@
 #' and habitat breadth
 #' The trait data were compiled from four main sources: PanTHERIA (Jones et al., 2009),
 #' Pacifici database (Pacifici et al., 2013), EltonTraits database (Wilman et al., 2014)
-#' and Amniote database (Myhrvold et al., 2015), which should be cited, alongwith
+#' and Amniote database (Myhrvold et al., 2015), which should be cited, along with
 #' this paper, when using this trait data.
 #'
 #' @return A \code{data.table}, of traits for mammals and birds
