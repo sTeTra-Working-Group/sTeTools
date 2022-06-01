@@ -31,6 +31,7 @@ reading_amphiBIO <- function() {
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/amphiBIO/AmphiBIO_v1.csv')) {
       download.file(url = 'https://ndownloader.figshare.com/files/8828578', destfile = './cache/traits/amphiBIO.zip', mode = 'wb')
+      dir.create('./downloaded data/traits/amphiBIO', showWarnings = FALSE)
       unzip(zipfile = './cache/traits/amphiBIO.zip',
             exdir = './downloaded data/traits/amphiBIO')
       file.remove('./cache/traits/amphiBIO.zip')
