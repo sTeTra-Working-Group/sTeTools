@@ -11,4 +11,4 @@ create_folders <- function() {
    dir.create("./data/downloaded_data", showWarnings = FALSE)
    dir.create("./data/downloaded_data/traits", showWarnings = FALSE)
    dir.create("./data/shared_data", showWarnings = FALSE)
-   }
+}
