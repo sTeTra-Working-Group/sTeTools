@@ -17,11 +17,11 @@ reading_european_amphibian_history_trait_data <- function() {
       # suppdata::suppdata(x = '10.3897/BDJ.2.e4123', si = "European_Amphibians_Database3.xls")
       download.file(
          url = "http://pwt.pensoft.net//getfile.php?filename=oo_32985.xlsx",
-         destfile = './cache/traits/European_Amphibians_Database3.xlsx',
+         destfile = './data/cache//traits/European_Amphibians_Database3.xlsx',
          mode = 'wb')
 
       ead <- data.table::as.data.table(
-         readxl::read_xlsx('./cache/traits/European_Amphibians_Database3.xlsx',
+         readxl::read_xlsx('./data/cache//traits/European_Amphibians_Database3.xlsx',
                            na = 'DD', range = 'Feuil1!A4:L90')
       )
       data.table::setnames(ead, paste(colnames(ead),
@@ -35,7 +35,7 @@ reading_european_amphibian_history_trait_data <- function() {
                          file = './data/downloaded_data/traits/european_amphibians_database3.csv',
                          dec = '.', sep = ','
       )
-      file.remove('./cache/traits/European_Amphibians_Database3.xlsx')
+      file.remove('./data/cache//traits/European_Amphibians_Database3.xlsx')
 
       return(ead)
    } else {

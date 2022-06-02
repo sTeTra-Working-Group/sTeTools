@@ -16,16 +16,16 @@ reading_rate_of_living_in_tetrapods_data <- function() {
    if (!file.exists( './data/downloaded data/traits/rate_of_living_in_tetrapods.csv')) {
       download.file(
          url = "https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2Fgeb.13069&file=geb13069-sup-0001-AppendixS1.xlsx",
-         destfile = './cache/traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx',
+         destfile = './data/cache//traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx',
          mode = 'wb')
 
       rol <- data.table::as.data.table(
-         readxl::read_xlsx('./cache/traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx', sheet = 1, n_max = 4100)
+         readxl::read_xlsx('./data/cache//traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx', sheet = 1, n_max = 4100)
       )
       data.table::set(x = rol, j = c(5L, 8L:14L), value = NULL) # deleting unwanted columns
       data.table::fwrite(x = rol, file = './data/downloaded data/traits/rate_of_living_in_tetrapods.csv', dec = '.', sep = ',')
 
-      file.remove('./cache/traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx')
+      file.remove('./data/cache//traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx')
       return(rol)
    } else {
       return(

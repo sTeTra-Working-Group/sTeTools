@@ -26,12 +26,12 @@ reading_panTHERIA <- function() {
    if (!file.exists('./data/downloaded data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt')) {
       download.file(
          url = 'https://ndownloader.figshare.com/files/5604752',
-         destfile = './cache/traits/PanTHERIA_ECOL_90_184.zip',
+         destfile = './data/cache/traits/PanTHERIA_ECOL_90_184.zip',
          mode = 'wb'
          )
-      unzip(zipfile = './cache/traits/PanTHERIA_ECOL_90_184.zip',
+      unzip(zipfile = './data/cache/traits/PanTHERIA_ECOL_90_184.zip',
             exdir = './data/downloaded data/traits/PanTHERIA')
-      file.remove('./cache/traits/PanTHERIA_ECOL_90_184.zip')
+      file.remove('./data/cache/traits/PanTHERIA_ECOL_90_184.zip')
    }
    # reading the trait table
    selected_columns <- which(grepl("^MSW05_|^5-|^13-", data.table::fread("./data/downloaded data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", sep = '\t', header = FALSE, nrows = 1)))

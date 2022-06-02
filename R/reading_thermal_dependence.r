@@ -18,11 +18,11 @@ reading_thermal_dependence <- function() {
    if (!file.exists('./data/downloaded data/traits/elton_traits_1.0/MamFuncDat.txt')) {
       download.file(
          url = 'https://ndownloader.figshare.com/articles/3556611/versions/1',
-         destfile = './cache/traits/thermal_dependence.zip',
+         destfile = './data/cache//traits/thermal_dependence.zip',
          mode = 'wb')
-      unzip(zipfile = './cache/traits/thermal_dependence.zip',
+      unzip(zipfile = './data/cache//traits/thermal_dependence.zip',
             exdir = './data/downloaded data/traits/thermal_dependence')
-      file.remove('./cache/traits/thermal_dependence.zip')
+      file.remove('./data/cache//traits/thermal_dependence.zip')
    }
 
    # reading the csv
