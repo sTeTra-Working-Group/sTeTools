@@ -14,7 +14,7 @@ reading_DISPERSE <- function() {
    create_folders()
    # downloading from figshare
 
-   if (!file.exists("./data/downloaded data/traits/R_Disperse.csv")) {
+   if (!file.exists("./data/downloaded_data/traits/R_Disperse.csv")) {
       try(
          suppdata::suppdata(
             x = "10.6084/m9.figshare.c.5000633.v3",
@@ -32,12 +32,12 @@ reading_DISPERSE <- function() {
 
       colnames(values)[match(traits$Code, colnames(values))] <- traits$Trait[match( colnames(values)[match(traits$Code, colnames(values))], traits$Code)]
 
-      write.table(x = values, file = "./data/downloaded data/traits/R_Disperse.csv", sep = ",", dec = '.', row.names = FALSE, na = 'NA')
+      write.table(x = values, file = "./data/downloaded_data/traits/R_Disperse.csv", sep = ",", dec = '.', row.names = FALSE, na = 'NA')
    }
 
    # reading the csv
    return(
-      data.table::fread('./data/downloaded data/traits/R_Disperse.csv', sep = ',', dec = '.', header = TRUE)
+      data.table::fread('./data/downloaded_data/traits/R_Disperse.csv', sep = ',', dec = '.', header = TRUE)
    )
 }
 

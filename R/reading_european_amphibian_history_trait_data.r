@@ -13,7 +13,7 @@
 
 reading_european_amphibian_history_trait_data <- function() {
    create_folders()
-   if (!file.exists('./data/downloaded data/traits/european_amphibians_database3.csv')) {
+   if (!file.exists('./data/downloaded_data/traits/european_amphibians_database3.csv')) {
       # suppdata::suppdata(x = '10.3897/BDJ.2.e4123', si = "European_Amphibians_Database3.xls")
       download.file(
          url = "http://pwt.pensoft.net//getfile.php?filename=oo_32985.xlsx",
@@ -32,7 +32,7 @@ reading_european_amphibian_history_trait_data <- function() {
       )
 
       data.table::fwrite(x = ead,
-                         file = './data/downloaded data/traits/european_amphibians_database3.csv',
+                         file = './data/downloaded_data/traits/european_amphibians_database3.csv',
                          dec = '.', sep = ','
       )
       file.remove('./cache/traits/European_Amphibians_Database3.xlsx')
@@ -41,7 +41,7 @@ reading_european_amphibian_history_trait_data <- function() {
    } else {
       return(
          data.table::fread(
-            file = './data/downloaded data/traits/european_amphibians_database3.csv',
+            file = './data/downloaded_data/traits/european_amphibians_database3.csv',
             dec = '.', sep = ',', header = TRUE)
       )
    }

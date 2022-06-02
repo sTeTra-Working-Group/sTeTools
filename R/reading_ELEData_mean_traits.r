@@ -16,14 +16,14 @@
 reading_ELEData_mean_traits <- function() {
    create_folders()
    # downloading from figshare, unzipping the archive.
-   if (!file.exists('./data/downloaded data/traits/ELEData_avonet/ELEData/TraitData/AVONET1_BirdLife.csv')) {
+   if (!file.exists('./data/downloaded_data/traits/ELEData_avonet/ELEData/TraitData/AVONET1_BirdLife.csv')) {
       download.file(url = 'https://figshare.com/ndownloader/files/34480865', destfile = './data/cache/traits/ELEData_avonet.zip', mode = 'wb')
       unzip(zipfile = './data/cache/traits/ELEData_avonet.zip',
-            exdir = './data/downloaded data/traits/ELEData_avonet')
+            exdir = './data/downloaded_data/traits/ELEData_avonet')
    }
 
    # reading the csv
    return(
-      data.table::fread('./data/downloaded data/traits/ELEData_avonet/ELEData/TraitData/AVONET1_BirdLife.csv', sep = ',', dec = '.', header = TRUE)
+      data.table::fread('./data/downloaded_data/traits/ELEData_avonet/ELEData/TraitData/AVONET1_BirdLife.csv', sep = ',', dec = '.', header = TRUE)
    )
 }

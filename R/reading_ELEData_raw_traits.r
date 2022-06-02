@@ -17,14 +17,14 @@
 reading_ELEData_raw_traits <- function() {
    create_folders()
    # downloading from figshare, unzipping the archive.
-   if (!file.exists('./data/downloaded data/traits/ELEData_avonet/ELEData/TraitData/AVONET_Raw_Data.csv')) {
+   if (!file.exists('./data/downloaded_data/traits/ELEData_avonet/ELEData/TraitData/AVONET_Raw_Data.csv')) {
       download.file(url = 'https://figshare.com/ndownloader/files/34480865', destfile = './data/cache/traits/ELEData_avonet.zip', mode = 'wb')
       unzip(zipfile = './data/cache/traits/ELEData_avonet.zip',
-            exdir = './data/downloaded data/traits/ELEData_avonet')
+            exdir = './data/downloaded_data/traits/ELEData_avonet')
    }
 
    # reading the csv
    return(
-      data.table::fread('./data/downloaded data/traits/ELEData_avonet/ELEData/TraitData/AVONET_Raw_Data.csv', sep = ',', dec = '.', header = TRUE, select = 1L:26L)
+      data.table::fread('./data/downloaded_data/traits/ELEData_avonet/ELEData/TraitData/AVONET_Raw_Data.csv', sep = ',', dec = '.', header = TRUE, select = 1L:26L)
    )
 }
