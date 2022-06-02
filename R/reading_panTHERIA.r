@@ -23,24 +23,28 @@
 reading_panTHERIA <- function() {
    create_folders()
    # downloading from figshare, unzipping, deleting the archive.
-   if (!file.exists('./data/downloaded data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt')) {
+   if (!file.exists('./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt')) {
       download.file(
          url = 'https://ndownloader.figshare.com/files/5604752',
          destfile = './data/cache/traits/PanTHERIA_ECOL_90_184.zip',
          mode = 'wb'
          )
       unzip(zipfile = './data/cache/traits/PanTHERIA_ECOL_90_184.zip',
-            exdir = './data/downloaded data/traits/PanTHERIA')
+            files = c(
+               "PanTHERIA_1-0_WR05_Aug2008.txt",
+               "SppSynonymID1.0.txt",
+               "metadata.htm"
+            ),
+            exdir = './data/downloaded_data/traits/PanTHERIA')
       file.remove('./data/cache/traits/PanTHERIA_ECOL_90_184.zip')
    }
    # reading the trait table
-   selected_columns <- which(grepl("^MSW05_|^5-|^13-", data.table::fread("./data/downloaded data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", sep = '\t', header = FALSE, nrows = 1)))
-   p <- data.table::fread("./data/downloaded data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", na.strings = '-999.00', sep = '\t', dec = '.', header = TRUE, select = selected_columns)
+   selected_columns <- which(grepl("^MSW05_|^5-|^13-", data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", sep = '\t', header = FALSE, nrows = 1)))
+   p <- data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", na.strings = '-999.00', sep = '\t', dec = '.', header = TRUE, select = selected_columns)
    # reading the taxonomy table
-   tax <- data.table::fread("./data/downloaded data/traits/panTHERIA/SppSynonymID1.0.txt", na.strings = '-999.00', sep = '\t', header = TRUE)
+   tax <- data.table::fread("./data/downloaded_data/traits/panTHERIA/SppSynonymID1.0.txt", na.strings = '-999.00', sep = '\t', header = TRUE)
 
    # adding a synonym column to the trait table
-   library(data.table)
    tax[, sp := paste(Genus, Species)
    ][, synonyms := data.table::fifelse(
                         MSW05Trinomial == 'None',
