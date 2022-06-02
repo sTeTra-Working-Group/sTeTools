@@ -21,9 +21,14 @@
 #'
 
 reading_panTHERIA <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt')) {
-      download.file(url = 'https://ndownloader.figshare.com/files/5604752', destfile = './cache/traits/PanTHERIA_ECOL_90_184.zip', mode = 'wb')
+      download.file(
+         url = 'https://ndownloader.figshare.com/files/5604752',
+         destfile = './cache/traits/PanTHERIA_ECOL_90_184.zip',
+         mode = 'wb'
+         )
       unzip(zipfile = './cache/traits/PanTHERIA_ECOL_90_184.zip',
             exdir = './downloaded data/traits/PanTHERIA')
       file.remove('./cache/traits/PanTHERIA_ECOL_90_184.zip')

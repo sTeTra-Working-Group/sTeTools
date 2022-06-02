@@ -16,6 +16,7 @@
 
 
 reading_avian_body_sizes <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/avian_body_sizes/avian_ssd_jan07.txt')) {
       download.file(url = 'https://ndownloader.figshare.com/articles/3527864/versions/1', destfile = './cache/traits/avian_body_sizes.zip', mode = 'wb')

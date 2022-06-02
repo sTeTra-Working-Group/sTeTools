@@ -22,6 +22,7 @@
 #'
 
 reading_cooke <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    return(
       data.table::fread(

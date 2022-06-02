@@ -12,6 +12,7 @@
 #'
 
 reading_amniote_life_history_trait_database <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/amniote_life_history_database/Data_Files/Amniote_Sparse_Table_Aug_2015.csv')) {
       download.file(url = 'https://ndownloader.figshare.com/files/8067269', destfile = './cache/traits/amniote_life_history_database.zip', mode = 'wb')

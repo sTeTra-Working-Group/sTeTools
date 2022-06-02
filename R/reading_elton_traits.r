@@ -15,6 +15,7 @@
 
 
 reading_elton_traits <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/elton_traits_1.0/MamFuncDat.txt')) {
       download.file(url = 'https://ndownloader.figshare.com/articles/3559887/versions/1', destfile = './cache/traits/elton_traits_1.0.zip', mode = 'wb')

@@ -17,6 +17,7 @@
 
 
 reading_99_bird_species <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/99_bird_species_data-02-00012-s001/Table 1.csv')) {
       download.file(url = 'https://www.mdpi.com/2306-5729/2/2/12/s1', destfile = './cache/traits/data-02-00012-s001.zip', mode = 'wb')

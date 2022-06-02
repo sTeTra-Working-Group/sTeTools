@@ -13,9 +13,13 @@
 
 
 reading_thermal_dependence <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/elton_traits_1.0/MamFuncDat.txt')) {
-      download.file(url = 'https://ndownloader.figshare.com/articles/3556611/versions/1', destfile = './cache/traits/thermal_dependence.zip', mode = 'wb')
+      download.file(
+         url = 'https://ndownloader.figshare.com/articles/3556611/versions/1',
+         destfile = './cache/traits/thermal_dependence.zip',
+         mode = 'wb')
       unzip(zipfile = './cache/traits/thermal_dependence.zip',
             exdir = './downloaded data/traits/thermal_dependence')
       file.remove('./cache/traits/thermal_dependence.zip')
@@ -34,6 +38,4 @@ reading_thermal_dependence <- function() {
             stringsAsFactors = FALSE)
       )
    )
-
-
 }

@@ -15,8 +15,11 @@
 #'
 
 reading_herbivores_traits <- function() {
+   create_folders()
    if (!file.exists('./downloaded data/traits/european_amphibians_database3.csv')) {
-      download.file(url = "https://springernature.figshare.com/ndownloader/files/25606121", destfile = './cache/traits/quaternary_herbivores.xlsx', mode = 'wb')
+      download.file(
+         url = "https://springernature.figshare.com/ndownloader/files/25606121",
+         destfile = './cache/traits/quaternary_herbivores.xlsx', mode = 'wb')
 
       qh <- data.table::as.data.table(
          readxl::read_xlsx('./cache/traits/quaternary_herbivores.xlsx', sheet = 2)
@@ -30,8 +33,9 @@ reading_herbivores_traits <- function() {
 
       return(qh)
    } else {
-      return(data.table::fread(file = './downloaded data/traits/quaternary_herbivores.csv',
-                               dec = '.', sep = ',', header = TRUE)
+      return(
+         data.table::fread(file = './downloaded data/traits/quaternary_herbivores.csv',
+                           dec = '.', sep = ',', header = TRUE)
       )
    }
 }

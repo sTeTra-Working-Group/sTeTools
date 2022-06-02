@@ -14,8 +14,13 @@
 #'
 
 reading_ecological_traits_of_the_worlds_primates_data <- function() {
+   create_folders()
    if (!file.exists('./downloaded data/traits/ecological_traits_of_the_worlds_primates_BodyMass_.csv')) {
-      download.file(url = "https://zenodo.org/record/3839032/files/BodyMass_.csv?download=1", destfile = './downloaded data/traits/ecological_traits_of_the_worlds_primates_BodyMass_.csv', mode = 'w')
+      download.file(
+         url = "https://zenodo.org/record/3839032/files/BodyMass_.csv?download=1",
+         destfile = './downloaded data/traits/ecological_traits_of_the_worlds_primates_BodyMass_.csv', mode = 'w')
    }
-    return(data.table::fread("./downloaded data/traits/ecological_traits_of_the_worlds_primates_BodyMass_.csv"))
+   return(
+      data.table::fread("./downloaded data/traits/ecological_traits_of_the_worlds_primates_BodyMass_.csv")
+   )
 }

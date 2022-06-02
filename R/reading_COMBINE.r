@@ -11,6 +11,7 @@
 
 
 reading_COMBINE <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/COMBINE_10.1002_ecy.3344_1/MetadataS1.pdf')) {
       suppdata::suppdata(x = '10.1002/ecy.3344', si = 1, from = 'wiley',

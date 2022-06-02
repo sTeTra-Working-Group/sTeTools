@@ -15,6 +15,7 @@
 
 
 reading_ELEData_raw_traits <- function() {
+   create_folders()
    # downloading from figshare, unzipping the archive.
    if (!file.exists('./downloaded data/traits/ELEData_avonet/ELEData/TraitData/AVONET_Raw_Data.csv')) {
       download.file(url = 'https://figshare.com/ndownloader/files/34480865', destfile = './cache/traits/ELEData_avonet.zip', mode = 'wb')

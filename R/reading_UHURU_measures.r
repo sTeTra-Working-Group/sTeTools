@@ -15,12 +15,14 @@
 #'
 
 reading_UHURU_measures <- function() {
+   create_folders()
    # downloading from Dryad with rDryad
-
    ddata <- data.table::fread(file = rdryad::dryad_download("10.5061/dryad.1g1jwstxw")[[1L]][7L])
 
-   coords <- data.table::fread(file = rdryad::dryad_download("10.5061/dryad.1g1jwstxw")[[1L]][4L],
-                               drop = 3L:4L)
+   coords <- data.table::fread(
+      file = rdryad::dryad_download("10.5061/dryad.1g1jwstxw")[[1L]][4L],
+      drop = 3L:4L
+   )
    mean_coords <- coords[, .(dd_long = mean(dd_long), dd_lat = mean(dd_lat)), by = .(site, block)][, site := c("S","C","N")[match(site, c("SOUTH","CENTRAL","NORTH"))]]
 
    return(

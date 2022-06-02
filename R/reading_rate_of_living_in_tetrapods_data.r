@@ -12,8 +12,13 @@
 #'
 
 reading_rate_of_living_in_tetrapods_data <- function() {
+   create_folders()
    if (!file.exists( './downloaded data/traits/rate_of_living_in_tetrapods.csv')) {
-      download.file(url = "https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2Fgeb.13069&file=geb13069-sup-0001-AppendixS1.xlsx", destfile = './cache/traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx', mode = 'wb')
+      download.file(
+         url = "https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2Fgeb.13069&file=geb13069-sup-0001-AppendixS1.xlsx",
+         destfile = './cache/traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx',
+         mode = 'wb')
+
       rol <- data.table::as.data.table(
          readxl::read_xlsx('./cache/traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx', sheet = 1, n_max = 4100)
       )
@@ -23,7 +28,9 @@ reading_rate_of_living_in_tetrapods_data <- function() {
       file.remove('./cache/traits/rate-of-living_geb13069-sup-0001-AppendixS1.xlsx')
       return(rol)
    } else {
-      return(data.table::fread(file = './downloaded data/traits/rate_of_living_in_tetrapods.csv',
-                               dec = '.', sep = ',', header = TRUE))
+      return(
+         data.table::fread(file = './downloaded data/traits/rate_of_living_in_tetrapods.csv',
+                           dec = '.', sep = ',', header = TRUE)
+      )
    }
 }

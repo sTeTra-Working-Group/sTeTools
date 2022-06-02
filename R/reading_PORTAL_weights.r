@@ -15,8 +15,8 @@
 #'
 
 reading_PORTAL_weights <- function() {
+   create_folders()
    # downloading with dedicated portalr package
-
    if (portalr::check_for_newer_data()) portalr::download_observations()
 
    return(

@@ -30,6 +30,7 @@
 
 
 reading_body_mass_of_late_quaternary_mammals <- function() {
+   create_folders()
    # downloading from figshare, unzipping, deleting the archive.
    if (!file.exists('./downloaded data/traits/99_bird_species_data-02-00012-s001/Table 1.csv')) {
       download.file(url = 'https://ndownloader.figshare.com/articles/3523112/versions/1', destfile = './cache/traits/body_mass_of_late_quaternary_mammals.zip', mode = 'wb')

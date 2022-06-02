@@ -12,8 +12,12 @@
 #'
 
 reading_length_mass_allometries_in_amphibians_data <- function() {
+   create_folders()
    if (!file.exists( './downloaded data/traits/Length–mass_allometries_in_amphibians.csv')) {
-      download.file(url = "https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2F1749-4877.12268&file=inz212268-sup-0002-S1.xls", destfile = './cache/traits/amphibian_allometries_inz212268-sup-0002-S1.xls', mode = 'wb')
+      download.file(
+         url = "https://onlinelibrary.wiley.com/action/downloadSupplement?doi=10.1111%2F1749-4877.12268&file=inz212268-sup-0002-S1.xls",
+         destfile = './cache/traits/amphibian_allometries_inz212268-sup-0002-S1.xls',
+         mode = 'wb')
 
       lma <- data.table::as.data.table(
          readxl::read_xls('./cache/traits/amphibian_allometries_inz212268-sup-0002-S1.xls', sheet = 1)
@@ -24,7 +28,9 @@ reading_length_mass_allometries_in_amphibians_data <- function() {
 
       return(lma)
    } else {
-      return(data.table::fread(file = './downloaded data/traits/Length–mass_allometries_in_amphibians.csv',
-                               dec = '.', sep = ',', header = TRUE))
+      return(
+         data.table::fread(file = './downloaded data/traits/Length–mass_allometries_in_amphibians.csv',
+                           dec = '.', sep = ',', header = TRUE)
+      )
    }
 }

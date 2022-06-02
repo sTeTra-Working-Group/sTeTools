@@ -11,13 +11,21 @@
 
 
 reading_DISPERSE <- function() {
+   create_folders()
    # downloading from figshare
 
    if (!file.exists("./downloaded data/traits/R_Disperse.csv")) {
-      try(suppdata::suppdata(x = "10.6084/m9.figshare.c.5000633.v3", si = 1, from = "figshare", dir = "./cache/traits", save.name = "R_Disperse.xlsx"), silent = TRUE)
-      if (!file.exists("./cache/traits/R_Disperse.xlsx")) download.file(url = "https://springernature.figshare.com/ndownloader/files/24964343",
-                                                                                    destfile = "./cache/traits/R_Disperse.xlsx",
-                                                                                    mode = 'wb')
+      try(
+         suppdata::suppdata(
+            x = "10.6084/m9.figshare.c.5000633.v3",
+            si = 1, from = "figshare",
+            dir = "./cache/traits", save.name = "R_Disperse.xlsx"),
+         silent = TRUE)
+      if (!file.exists("./cache/traits/R_Disperse.xlsx")) download.file(
+         url = "https://springernature.figshare.com/ndownloader/files/24964343",
+         destfile = "./cache/traits/R_Disperse.xlsx",
+         mode = 'wb'
+      )
 
       traits <- readxl::read_xlsx("./cache/traits/R_Disperse.xlsx", sheet = 1)
       values <- readxl::read_xlsx("./cache/traits/R_Disperse.xlsx", sheet = 2, skip = 2)
