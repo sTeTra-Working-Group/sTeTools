@@ -28,7 +28,7 @@ reading_panTHERIA <- function() {
          url = 'https://ndownloader.figshare.com/files/5604752',
          destfile = './data/cache/traits/PanTHERIA_ECOL_90_184.zip',
          mode = 'wb'
-         )
+      )
       unzip(zipfile = './data/cache/traits/PanTHERIA_ECOL_90_184.zip',
             files = c(
                "PanTHERIA_1-0_WR05_Aug2008.txt",
@@ -42,18 +42,28 @@ reading_panTHERIA <- function() {
    selected_columns <- which(grepl("^MSW05_|^5-|^13-", data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", sep = '\t', header = FALSE, nrows = 1)))
    p <- data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", na.strings = '-999.00', sep = '\t', dec = '.', header = TRUE, select = selected_columns)
    # reading the taxonomy table
-   tax <- data.table::fread("./data/downloaded_data/traits/panTHERIA/SppSynonymID1.0.txt", na.strings = '-999.00', sep = '\t', header = TRUE)
+   tax <- data.table::fread(
+      file = "./data/downloaded_data/traits/panTHERIA/SppSynonymID1.0.txt",
+      na.strings = '-999.00', sep = '\t', header = TRUE
+   )
 
    # adding a synonym column to the trait table
-   tax[, sp := paste(Genus, Species)
-   ][, synonyms := data.table::fifelse(
-                        MSW05Trinomial == 'None',
-                        paste(unique(unlist(sp, MSW93Binomial)), collapse = '; '),
-                        paste(unique(unlist(sp, MSW93Binomial, MSW05Trinomial)), collapse = '; ')
-   ), by = MSW05Binomial]
+   data.table::set(x = tax, j = "sp", value = paste(tax$Genus, tax$Species))
+   for (species_i in unique(tax$MSW05Binomial)) {
+      selected_rows <- which(tax$MSW05Binomial == species_i)
+      data.table::set(
+         x = tax, i = selected_rows,
+         j = "synonyms",
+         value = data.table::fifelse(
+            tax$MSW05Trinomial[selected_rows] == 'None',
+            paste(unique(unlist(tax$sp[selected_rows], tax$MSW93Binomial[selected_rows])), collapse = '; '),
+            paste(unique(unlist(tax$sp[selected_rows], tax$MSW93Binomial[selected_rows], tax$MSW05Trinomial[selected_rows])), collapse = '; ')
+         )
+      )
+   }
 
-   p <- merge(p, unique(tax[, .(MSW05Binomial, synonyms)]), by.x = 'MSW05_Binomial', by.y = 'MSW05Binomial', all.x = TRUE)
-
-   return(p)
+   return(
+      merge(p, unique(tax[, .(MSW05Binomial, synonyms)]), by.x = 'MSW05_Binomial', by.y = 'MSW05Binomial', all.x = TRUE)
+   )
 }
 
