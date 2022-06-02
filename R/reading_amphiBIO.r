@@ -38,5 +38,7 @@ reading_amphiBIO <- function() {
       file.remove('./data/cache/traits/amphiBIO.zip')
    }
    # reading the csv
-   return(data.table::fread('./data/downloaded_data/traits/amphiBIO/AmphiBIO_v1.csv', sep = ',', dec = '.', header = TRUE, encoding = 'Latin-1', select = c(1:5, 23, 26:28)))
+   return(
+      data.table::fread('./data/downloaded_data/traits/amphiBIO/AmphiBIO_v1.csv', sep = ',', dec = '.', header = TRUE, encoding = 'Latin-1')
+   )
 }
