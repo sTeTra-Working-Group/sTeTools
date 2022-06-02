@@ -1,7 +1,6 @@
 #' Internal function - Creates all necessary folders in case they were not pushed to git
 #'
-#' @return No return. Side effects only
-#' @export
+#' @return No returned value. Side effects only
 #'
 
 create_folders <- function() {

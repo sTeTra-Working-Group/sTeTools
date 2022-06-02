@@ -32,15 +32,15 @@
 reading_body_mass_of_late_quaternary_mammals <- function() {
    create_folders()
    # downloading from figshare, unzipping, deleting the archive.
-   if (!file.exists('./downloaded data/traits/99_bird_species_data-02-00012-s001/Table 1.csv')) {
-      download.file(url = 'https://ndownloader.figshare.com/articles/3523112/versions/1', destfile = './cache/traits/body_mass_of_late_quaternary_mammals.zip', mode = 'wb')
-      unzip(zipfile = './cache/traits/body_mass_of_late_quaternary_mammals.zip',
-            exdir = './downloaded data/traits/body_mass_of_late_quaternary_mammals')
-      file.remove('./cache/traits/body_mass_of_late_quaternary_mammals.zip')
+   if (!file.exists('./data/downloaded data/traits/99_bird_species_data-02-00012-s001/Table 1.csv')) {
+      download.file(url = 'https://ndownloader.figshare.com/articles/3523112/versions/1', destfile = './data/cache/traits/body_mass_of_late_quaternary_mammals.zip', mode = 'wb')
+      unzip(zipfile = './data/cache/traits/body_mass_of_late_quaternary_mammals.zip',
+            exdir = './data/downloaded data/traits/body_mass_of_late_quaternary_mammals')
+      file.remove('./data/cache/traits/body_mass_of_late_quaternary_mammals.zip')
    }
 
    # reading the csv
-   mom <- data.table::fread('./downloaded data/traits/body_mass_of_late_quaternary_mammals/MOMv3.3.txt', sep = '\t', dec = '.', header = FALSE, na.strings = '-999')
+   mom <- data.table::fread('./data/downloaded data/traits/body_mass_of_late_quaternary_mammals/MOMv3.3.txt', sep = '\t', dec = '.', header = FALSE, na.strings = '-999')
    data.table::setnames(mom, c('continent','status','order','family','genus','species','log mass','combined mass','reference'))
    return(mom)
 }

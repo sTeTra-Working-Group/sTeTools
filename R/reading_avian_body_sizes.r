@@ -18,14 +18,14 @@
 reading_avian_body_sizes <- function() {
    create_folders()
    # downloading from figshare, unzipping, deleting the archive.
-   if (!file.exists('./downloaded data/traits/avian_body_sizes/avian_ssd_jan07.txt')) {
-      download.file(url = 'https://ndownloader.figshare.com/articles/3527864/versions/1', destfile = './cache/traits/avian_body_sizes.zip', mode = 'wb')
-      unzip(zipfile = './cache/traits/avian_body_sizes.zip',
-            exdir = './downloaded data/traits/avian_body_sizes')
-      file.remove('./cache/traits/avian_body_sizes.zip')
+   if (!file.exists('./data/downloaded data/traits/avian_body_sizes/avian_ssd_jan07.txt')) {
+      download.file(url = 'https://ndownloader.figshare.com/articles/3527864/versions/1', destfile = './data/cache/traits/avian_body_sizes.zip', mode = 'wb')
+      unzip(zipfile = './data/cache/traits/avian_body_sizes.zip',
+            exdir = './data/downloaded data/traits/avian_body_sizes')
+      file.remove('./data/cache/traits/avian_body_sizes.zip')
    }
    # reading the txt
    return(
-      readr::read_delim('./downloaded data/traits/avian_body_sizes/avian_ssd_jan07.txt', delim = '\t', na = '-999')[, 1:41]
+      readr::read_delim('./data/downloaded data/traits/avian_body_sizes/avian_ssd_jan07.txt', delim = '\t', na = '-999')[, 1:41]
    )
 }

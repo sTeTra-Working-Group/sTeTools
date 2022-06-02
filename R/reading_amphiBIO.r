@@ -30,13 +30,13 @@
 reading_amphiBIO <- function() {
    create_folders()
    # downloading from figshare, unzipping, deleting the archive.
-   if (!file.exists('./downloaded data/traits/amphiBIO/AmphiBIO_v1.csv')) {
-      download.file(url = 'https://ndownloader.figshare.com/files/8828578', destfile = './cache/traits/amphiBIO.zip', mode = 'wb')
-      dir.create('./downloaded data/traits/amphiBIO', showWarnings = FALSE)
-      unzip(zipfile = './cache/traits/amphiBIO.zip',
-            exdir = './downloaded data/traits/amphiBIO')
-      file.remove('./cache/traits/amphiBIO.zip')
+   if (!file.exists('./data/downloaded data/traits/amphiBIO/AmphiBIO_v1.csv')) {
+      download.file(url = 'https://ndownloader.figshare.com/files/8828578', destfile = './data/cache/traits/amphiBIO.zip', mode = 'wb')
+      dir.create('./data/downloaded data/traits/amphiBIO', showWarnings = FALSE)
+      unzip(zipfile = './data/cache/traits/amphiBIO.zip',
+            exdir = './data/downloaded data/traits/amphiBIO')
+      file.remove('./data/cache/traits/amphiBIO.zip')
    }
    # reading the csv
-   return(data.table::fread('./downloaded data/traits/amphiBIO/AmphiBIO_v1.csv', sep = ',', dec = '.', header = TRUE, encoding = 'Latin-1', select = c(1:5, 23, 26:28)))
+   return(data.table::fread('./data/downloaded data/traits/amphiBIO/AmphiBIO_v1.csv', sep = ',', dec = '.', header = TRUE, encoding = 'Latin-1', select = c(1:5, 23, 26:28)))
 }
