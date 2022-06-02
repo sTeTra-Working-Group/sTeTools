@@ -1,6 +1,6 @@
 Package: sTools
 Title: Tools for sTeTra working group
-Version: 0.0.0.9014
+Version: 0.0.0.9015
 Description: Biodiversity is changing. State-of-the-art research shows species
    replacement (‘turnover’) is the strongest biotic signature of global change.
    However, we don’t know whether the main trend is species replacing each other
@@ -11,18 +11,12 @@ Description: Biodiversity is changing. State-of-the-art research shows species
    bringing together experts in trait and community change, biodiversity theory
    and modelling.
 Author@R: c(
-   person("Shane", "Blowes", email = "shane.blowes@idiv.de",
-                  role = c("aut")),
-   person("Jon", "Chase", email = "jon.chase@idiv.de",
-                  role = c("aut")),
-   person("Maria", "Dornelas", email = "maadd@st-andrews.ac.uk",
-                  role = c("aut")),
-   person("Inês", "Martins", email = "ines.martins@york.ac.uk",
-                  role = c("aut")),
+   person("Cher", "Chow", email = "fycc1@st-andrews.ac.uk",
+                  role = c("aut"),
+        comment = c(ORCID = "0000-0002-1020-8409")),
    person("Alban", "Sagouis", email = "alban.sagouis@idiv.de",
-                  role = c("aut", "cre")),                  
-   person("Franziska", "Schrodt", email = "lgzfs@nottingham.ac.uk",
-                  role = c("aut"))
+                  role = c("aut", "cre"),
+        comment = c(ORCID = "0000-0002-3827-1063"))
 Maintainer: Alban Sagouis <alban.sagouis@idiv.de>
 Depends: R (>= 3.0.1)
 Suggests:
