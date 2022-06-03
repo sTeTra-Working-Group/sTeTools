@@ -36,7 +36,6 @@ reading_panTHERIA <- function() {
                "metadata.htm"
             ),
             exdir = './data/downloaded_data/traits/PanTHERIA')
-      file.remove('./data/cache/traits/PanTHERIA_ECOL_90_184.zip')
    }
    # reading the trait table
    selected_columns <- which(grepl("^MSW05_|^5-|^13-", data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", sep = '\t', header = FALSE, nrows = 1)))
@@ -49,6 +48,9 @@ reading_panTHERIA <- function() {
 
    # adding a synonym column to the trait table
    data.table::set(x = tax, j = "sp", value = paste(tax$Genus, tax$Species))
+
+
+
    for (species_i in unique(tax$MSW05Binomial)) {
       selected_rows <- which(tax$MSW05Binomial == species_i)
       data.table::set(
@@ -63,7 +65,7 @@ reading_panTHERIA <- function() {
    }
 
    return(
-      merge(p, unique(tax[, .(MSW05Binomial, synonyms)]), by.x = 'MSW05_Binomial', by.y = 'MSW05Binomial', all.x = TRUE)
+      merge(p, unique(tax[, c("MSW05Binomial", "synonyms")]), by.x = 'MSW05_Binomial', by.y = 'MSW05Binomial', all.x = TRUE)
    )
 }
 
