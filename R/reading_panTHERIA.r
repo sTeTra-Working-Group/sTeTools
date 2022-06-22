@@ -38,8 +38,7 @@ reading_panTHERIA <- function() {
             exdir = './data/downloaded_data/traits/PanTHERIA')
    }
    # reading the trait table
-   selected_columns <- which(grepl("^MSW05_|^5-|^13-", data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", sep = '\t', header = FALSE, nrows = 1)))
-   p <- data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", na.strings = '-999.00', sep = '\t', dec = '.', header = TRUE, select = selected_columns)
+   p <- data.table::fread("./data/downloaded_data/traits/panTHERIA/PanTHERIA_1-0_WR05_Aug2008.txt", na.strings = '-999.00', sep = '\t', dec = '.', header = TRUE)
    # reading the taxonomy table
    tax <- data.table::fread(
       file = "./data/downloaded_data/traits/panTHERIA/SppSynonymID1.0.txt",
