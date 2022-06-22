@@ -27,8 +27,8 @@ reading_elton_traits <- function() {
    # reading the csv
    return(
       list(
-         mammals = data.table::fread('./data/downloaded_data/traits/elton_traits_1.0/MamFuncDat.txt', sep = '\t', dec = '.', header = TRUE, nrows = 5400, drop = 4:23, na.strings = ''),
-         birds = data.table::fread('./data/downloaded_data/traits/elton_traits_1.0/BirdFuncDat.txt', sep = '\t', dec = '.', header = TRUE, nrows = 9993, drop = 9:35, na.strings = '')
+         mammals = data.table::fread('./data/downloaded_data/traits/elton_traits_1.0/MamFuncDat.txt', sep = '\t', dec = '.', header = TRUE, na.strings = ''),
+         birds = data.table::fread('./data/downloaded_data/traits/elton_traits_1.0/BirdFuncDat.txt', sep = '\t', dec = '.', header = TRUE, na.strings = '')
       )
    )
 
